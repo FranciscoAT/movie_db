@@ -2,8 +2,7 @@
  
 Authors:
 
-Francisco Trindade
-Oliver Fei
+Francisco Trindade & Oliver Fei
 
 Created for CSI2132 final project (Databases I) at University of Ottawa
 
@@ -22,7 +21,7 @@ Created for CSI2132 final project (Databases I) at University of Ottawa
     cd ~/.../movie_db
     cd webapp
     ```
-1. Run the noe server
+1. Run the node server
     ```
     npm start
     ```
