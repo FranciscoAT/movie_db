@@ -16,14 +16,14 @@ Created for CSI2132 final project (Databases I) at University of Ottawa
 ##Running server
 
 0. Get to the `webabb` directory
-```
-cd ~/.../movie_db
-cd webapp
-```
+    ```
+    cd ~/.../movie_db
+    cd webapp
+    ```
 1. Run the noe server
-```
-node app.js
-```
+    ```
+    node app.js
+    ```
 2. Head to [http://localhost:3000](http://localhost:3000)
 
 ------------------
