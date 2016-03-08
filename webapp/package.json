@@ -1,0 +1,14 @@
+{
+  "name": "webapp",
+  "version": "0.0.0",
+  "description": "Web app for CSI2132 Movie Database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Francisco Trindade & Oliver Fei",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "express": "~4.13.4"
+  }
+}
