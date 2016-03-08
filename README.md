@@ -13,7 +13,9 @@ Created for CSI2132 final project (Databases I) at University of Ottawa
 
 --------------------
 
-##Running server
+##~~RUnning server~~ 
+
+Ignore section for now
 
 0. Get to the `webabb` directory
     ```
@@ -33,11 +35,10 @@ Created for CSI2132 final project (Databases I) at University of Ottawa
 Ensure you have [nodejs](https://nodejs.org/en/) installed on your machine
 
 Linux: 
-```
-sudo apt-get install nodejs
+    ```
+    sudo apt-get install nodejs
 
-```
-
+    ```
 -------------------
 
 Any questions/suggestions direct them to francisco.ad.trindade@gmail.com
