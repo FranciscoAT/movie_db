@@ -8,14 +8,14 @@ Oliver Fei
 Created for CSI2132 final project (Databases I) at University of Ottawa
 
 ---------------------
+## Git Stuff
 
-- *git*: make sure before pushing to `master` you run `git rebase origin/master`
+- Make sure before pushing to `master` you run `git rebase origin/master`
+- Don't push `node_modules` :)
 
 --------------------
 
-##~~RUnning server~~ 
-
-Ignore section for now
+##Running server 
 
 0. Get to the `webabb` directory
     ```
@@ -24,7 +24,7 @@ Ignore section for now
     ```
 1. Run the noe server
     ```
-    node app.js
+    npm start
     ```
 2. Head to [http://localhost:3000](http://localhost:3000)
 
@@ -34,11 +34,7 @@ Ignore section for now
 
 Ensure you have [nodejs](https://nodejs.org/en/) installed on your machine
 
-Linux: 
-    ```
-    sudo apt-get install nodejs
-
-    ```
+Linux:`sudo apt-get install nodejs`
 -------------------
 
 Any questions/suggestions direct them to francisco.ad.trindade@gmail.com
