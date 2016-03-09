@@ -4,11 +4,13 @@
 
 ##Tastekid
 
-Use Tastekid API to search for recommendations for movies :[http://www.tastekid.com/read/api](TasteKid API)
+Use Tastekid API to search for recommendations for movies :[TasteKid API](http://www.tastekid.com/read/app)
+
 Limited to 150 recommendation requests/hour
 
 ##OMDB
 
-Use [http://www.omdbapi.com/](OMDB) to search for information on movies.
+Use [OMDB](http://www.omdbapi.com/) to search for information on movies.
+
 NOTE: No key required and requests/hour is not specified
 
