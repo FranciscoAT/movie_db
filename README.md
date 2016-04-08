@@ -16,7 +16,7 @@ Created for CSI2132 final project (Databases I) at University of Ottawa
 
 ##Running server 
 
-0. Get to the `webabb` directory
+0. Get to the `webapp` directory
     ```
     cd ~/.../movie_db
     cd webapp

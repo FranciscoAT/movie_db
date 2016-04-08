@@ -4,7 +4,7 @@
 
 ##Tastekid
 
-Use Tastekid API to search for recommendations for movies :[TasteKid API](http://www.tastekid.com/read/app)
+Use [Tastekid API](http://www.tastekid.com/read/app) to search for recommendations for movies 
 
 Limited to 150 recommendation requests/hour
 
