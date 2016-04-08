@@ -10,3 +10,8 @@ a {
 title {
     text-align: center;
 }
+
+#searchForm{
+    margin: 8px 0 8px 0;
+}
+
