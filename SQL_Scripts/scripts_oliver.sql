@@ -1,0 +1,52 @@
+CREATE TABLE user(
+userid VARCHAR(255) PRIMARY KEY,
+password VARCHAR(255),
+last_name VARCHAR(255),
+first_name VARCHAR(255),
+join_date DATE,
+email VARCHAR(255),
+city VARCHAR(255),
+province VARCHAR(255),
+country VARCHAR(255));
+
+CREATE TABLE profile(
+userid VARCHAR(255),
+age INTEGER,
+gender CHAR,
+description VARCHAR(255),
+FOREIGN KEY (userid) REFERENCES user ON DELETE CASCADE ON UPDATE CASCADE,
+PRIMARY KEY(userid));
+
+CREATE TABLE topics(
+topicid INTEGER PRIMARY KEY, 
+description VARCHAR(255));
+
+CREATE TABLE movie(
+movieid INTEGER PRIMARY KEY, 
+name VARCHAR(255),
+duration SMALLINT,
+date_released DATE,
+language VARCHAR(255),
+imageurl VARCHAR(255),
+trailerurl VARCHAR(255));
+
+CREATE TABLE watches(
+userid VARCHAR(255), 
+movieid INTEGER, 
+date DATE, 
+rating SMALLINT,
+FOREIGN KEY (userid) REFERENCES user ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY (movieid) REFERENCES movie ON DELETE CASCADE ON UPDATE CASCADE,
+PRIMARY KEY (userid, movieid));
+
+CREATE TABLE movietopics(
+topicid INTEGER, 
+movieid INTEGER,
+FOREIGN KEY (topicid) REFERENCES topics ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY (movieid) REFERENCES movie ON DELETE CASCADE ON UPDATE CASCADE);
+
+CREATE TABLE actor(
+actorid INTEGER PRIMARY KEY,
+last_name VARCHAR(255),
+first_name VARCHAR(255),
+date_of_birth DATE);

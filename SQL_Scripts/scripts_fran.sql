@@ -1,15 +1,15 @@
-CEATE TABLE Actor(
+CREATE TABLE Actor(
     ActorID = INTEGER NOT NULL,
-    lastname = VARCHAR(20),
-    firstname = VARCHAR(20),
+    lastname = VARCHAR(255),
+    firstname = VARCHAR(255),
     DateOfBirth = DATE,
-    country = VARCHAR(20),
+    country = VARCHAR(255),
     Bio = VARCHAR,
     PRIMARY KEY(ActorID));
 
 CREATE TABLE Role(
     RoleID = INTEGER NOT NULL,
-    name = VARCHAR(20) NOT NULL,
+    name = VARCHAR(255) NOT NULL,
     ActorID = INTEGER NOT NULL,
     PRIMARY KEY(RoleID),
     FOREIGN KEY(ActorID) REFERENCE Actor ON DELETE RESTRICT);
@@ -24,10 +24,10 @@ CREATE TABLE ActorPlays(
 
 CREATE TABLE Director(
     DirectorID = INTEGER NOT NULL,
-    lastname = VARCHAR(20),
-    firstame = VARCHAR(20),
+    lastname = VARCHAR(255),
+    firstame = VARCHAR(255),
     DateOfBirth = DATE,
-    country = VARCHAR(20),
+    country = VARCHAR(255),
     PRIMARY KEY(DirectorID));
 
 CREATE TABLE Directs(
