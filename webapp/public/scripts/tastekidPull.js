@@ -1,12 +1,7 @@
 var http = require('http');
+var fs = require('fs');
 
-var movieName = "pulp+fiction";
-var 
-
-function getSimilar(argName) { 
-
-    var test;
-    
+function getSimilar(argName){
     var options = {
         host: 'www.tastekid.com',
         port: 80,
@@ -19,12 +14,12 @@ function getSimilar(argName) {
             data += chunk;
         });
         res.on('end', function() {
-            console.log(data);
-        });        
+            fs.writeFile('tempRec.json', data);
+        });
     }).on('error', function(e) {
         console.log("Got error: " + e.message);
     });
-
 };
 
-getSimilar(movieName);
+
+
