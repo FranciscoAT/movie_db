@@ -1,4 +1,4 @@
-body {
+html, body {
   padding: 50px;
   font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -15,3 +15,42 @@ title {
     margin: 8px 0 8px 0;
 }
 
+#jumbotron{
+    background-color: transparent;
+    color: #aaa
+}
+
+#lenny{
+    opacity: 0;
+    
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-delay: 2s;
+    animation-name: fade;
+    animation-duration: 4s;
+    animation-delay: 2s;
+    
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes fade {
+    0%   {opacity:0;}
+    100% {opacity:1;}
+}
+
+/* Standard syntax */
+@keyframes fade {
+    0%   {opacity:0;}
+    100% {opacity:1;}
+}
+
+.vertical-center{
+    margin-bottom:0;
+    min-height: calc(100% - 250px);  /* Fallback for browsers do NOT support vh unit */
+    min-height: calc(100vh - 250px); /* These two lines are counted as one :-)       */
+
+    display: flex;
+    align-items: center;
+}
