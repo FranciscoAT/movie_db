@@ -1,13 +1,14 @@
 CREATE TABLE user(
-userid VARCHAR(255) PRIMARY KEY NOT NULL,
-password VARCHAR(255),
-last_name VARCHAR(255),
-first_name VARCHAR(255),
-join_date DATE,
-email VARCHAR(255),
+userid SERIAL PRIMARY KEY,
+password VARCHAR(255) NOT NULL,
+last_name VARCHAR(255) NOT NULL,
+first_name VARCHAR(255) NOT NULL,
+join_date DATE DEFAULT CURRENT_DATE,
+email VARCHAR(255) NOT NULL,
 city VARCHAR(255),
 province VARCHAR(255),
-country VARCHAR(255));
+country VARCHAR(255),
+isAdmin BOOLEAN DEFAULT FALSE);
 
 CREATE TABLE profile(
 userid VARCHAR(255),
@@ -22,7 +23,7 @@ topicid INTEGER PRIMARY KEY,
 description VARCHAR(255));
 
 CREATE TABLE movie(
-movieid INTEGER PRIMARY KEY, 
+movieid INTEGER PRI`MARY KEY, 
 name VARCHAR(255),
 duration SMALLINT,
 date_released DATE,
