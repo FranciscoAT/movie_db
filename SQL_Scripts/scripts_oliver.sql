@@ -1,5 +1,5 @@
 CREATE TABLE user(
-userid VARCHAR(255) PRIMARY KEY,
+userid VARCHAR(255) PRIMARY KEY NOT NULL,
 password VARCHAR(255),
 last_name VARCHAR(255),
 first_name VARCHAR(255),

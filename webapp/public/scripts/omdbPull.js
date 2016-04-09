@@ -1,6 +1,8 @@
 var http = require('http');
 var fs = require('fs');
 
+// Pulls movie information and stores it in 'tempMovie.json'
+
 function getMovie(Name){
    var options = {
        host: 'www.omdbapi.com',
