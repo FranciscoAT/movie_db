@@ -5,7 +5,7 @@ function getMovie(Name){
    var options = {
        host: 'www.omdbapi.com',
        port: 80,
-       path: '/?/?plot=full&r=json&t='+Name
+       path: '/?plot=full&r=json&t='+Name
     };
 
     http.get(options, function(res){
