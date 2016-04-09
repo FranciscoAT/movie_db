@@ -1,1 +1,15 @@
 extends layout
+  
+block content
+  .container
+    h1= title
+  #infoContainer.container 
+    .search-result-item.container
+      img(style="width: 100px;")
+      .container
+        h3 Movie Title
+        input.rating(type="text" readonly=true data-size="sm" data-step=0.1)
+        p 
+          |Release Date: 2016 <br />
+          |Genres: Thriller, Psychological, Mystery, Porn, Hentai, Dank Memes
+       

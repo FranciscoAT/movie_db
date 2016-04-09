@@ -56,5 +56,9 @@ app.use(function(err, req, res, next) {
   });
 });
 
+//search handler
+app.post('/search',function(req,res){
+    console.log("search");
+});
 
 module.exports = app;

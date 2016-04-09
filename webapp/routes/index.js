@@ -14,4 +14,10 @@ router.get('/signup', function(req, res, next) {
   res.render('signup', { title: 'Sign Up For DankRecs' });
 });
 
+router.post('/search', function(req, res, next) {
+  var searchTerm = req.body.searchterm;
+  
+  res.render('search', { title: 'Dank Search Results: ' + searchTerm });
+});
+
 module.exports = router;

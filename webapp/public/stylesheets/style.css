@@ -58,3 +58,18 @@ title {
 #formContainer{
     max-width: 500px;
 }
+
+.container h3{
+    margin-top: 10px;
+}
+
+.search-result-item img{
+    height:150px;
+}
+
+.search-result-item{
+    background-color: #eee;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+}
