@@ -54,3 +54,7 @@ title {
     display: flex;
     align-items: center;
 }
+
+#formContainer{
+    max-width: 500px;
+}

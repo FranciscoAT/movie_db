@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  .vertical-center.text-center
+    #formContainer.container
+      form
+        if title == "Login"
+          legend
+            h1 Login
+        else
+          legend
+            h1 Sign Up For DankRecs!
+        fieldset.form-group
+          label Email
+            input#emailField.form-control(type="email")
+        fieldset.form-group
+          label Password
+            input#passwordField.form-control(type="password")
+        if title == "Login"
+          button.btn.btn-primary(type="submit") Login
+        else
+          button.btn.btn-primary(type="submit") Register
