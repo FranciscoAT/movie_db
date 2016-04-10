@@ -3,6 +3,7 @@
 var fs        = require("fs");
 var path      = require("path");
 var Sequelize = require("sequelize");
+
 var sequelize = new Sequelize('postgres', 'postgres', 'dankmemes', {
     port: 5432,
     dialect: 'postgres',
