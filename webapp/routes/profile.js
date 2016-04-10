@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 router.get('/profile', isLoggedIn, function(req, res, next){
-   res.render('profile',{
+   res.render('profile',{title: 'My Dank Profile',
        user : req.user
    });
 });
