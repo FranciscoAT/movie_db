@@ -22,16 +22,17 @@ router.get('/signup',checkNotLoggedIn, function(req, res, next) {
 router.post('/signup', function(req, res, next){
     var regemail = req.body.email;
     var password = req.body.password;
-    models.Users.findOne({where: {email: regemail}}).then(function( user) {
+    models.users.findOne({where: {email: regemail}}).then(function( user) {
 
             // check to see if theres already a user with that email
             if (user!=null) {
                 req.flash('Error', 'That username is already taken!')
+                res.redirect('/signup');
             } else {
 
                 // if there is no user with that email
                 // create the user
-                models.Users.create({                  
+                models.users.create({                  
                     // set the user's local credentials
                     email: regemail,
                     password: password

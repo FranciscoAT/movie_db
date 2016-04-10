@@ -6,12 +6,12 @@ createdAt DATE DEFAULT CURRENT_DATE,
 updatedAt DATE,
 isadmin BOOLEAN DEFAULT FALSE);
 
-CREATE TABLE profile(
+CREATE TABLE profiles(
 id INTEGER,
 last_name VARCHAR(255),
 first_name VARCHAR(255),
 age INTEGER,
-gender CHAR,
+gender VARCHAR(255),
 city VARCHAR(255),
 province VARCHAR(255),
 country VARCHAR(255),

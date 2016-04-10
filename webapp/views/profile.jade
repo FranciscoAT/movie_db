@@ -1,24 +1,24 @@
 extends info_layout
 
 block info
-  form(method = 'post')
+  form(method = 'post' action = '/profile')
     .form-group
       label First Name
-      input.form-control(name='firstname')= firstname
+      input.form-control(name='firstname' value=firstname)
     .form-group
       label Last Name
-      input.form-control(name='firstname')= lastname
+      input.form-control(name='lastname' value= lastname)
     .form-group
       label Age
-      input.form-control(name='age' type='number' min='1')= age
+      input.form-control(name='age' type='number' min='1' value= age)
     .form-group
       label Gender
       select.form-control(name='gender')
-        if gender == 'm'
+        if gender == 'MALE'
           option(selected) MALE
           option FEMALE
           option
-        if gender == 'f'
+        else if gender == 'FEMALE'
           option MALE
           option(selected) FEMALE
           option
@@ -28,14 +28,17 @@ block info
           option(selected)
     .form-group
       label City
-      input.form-control(name='city')= city
+      input.form-control(name='city' value= city)
     .form-group
       label Province
-      input.form-control(name='province')= province
+      input.form-control(name='province' value= province)
     .form-group
       label Country
-      input.form-control(name='country')= country
+      input.form-control(name='country' value= country)
     .form-group
       label Description
-      textarea.form-control(name='description')= description
+      textarea.form-control(name='description' value= description)
     button.btn.btn-default(type='submit') Update
+  
+  form#deleteAccount(method="post" action="/profile")  
+    button.btn.btn-default(type='submit' onclick="return confirm('Are you sure you want to delete your account')'") Delete Account

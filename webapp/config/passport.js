@@ -14,7 +14,6 @@ module.exports = function(passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        console.log('deserialize');
         models.users.findById(id).then(function(user) { done(null, user); });
     });
     
