@@ -16,7 +16,7 @@ function getSimilar(argName){
             data += chunk;
         });
         res.on('end', function() {
-            fs.writeFile('tempRec.json', data);
+            fs.writeFile('JSON_files/tempRec.json', data);
         });
     }).on('error', function(e) {
         console.log("Got error: " + e.message);

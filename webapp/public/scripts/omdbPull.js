@@ -16,7 +16,7 @@ function getMovie(Name){
             data += chunk;
         });
         res.on('end', function(){
-            fs.writeFile('tempMovie.json', data);
+            fs.writeFile('JSON_files/tempMovie.json', data);
         });
     }).on('error', function(e) {
         console.log("Got error: "+e.message);

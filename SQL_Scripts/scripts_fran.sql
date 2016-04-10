@@ -2,7 +2,7 @@ CREATE TABLE Actor(
     ActorID SERIAL PRIMARY KEY,
     lastname VARCHAR(255) NOT NULL,
     firstname VARCHAR(255) NOT NULL,
-    DateOfBirth DATE,
+    DateOfBirth VARCHAR(255),
     country VARCHAR(255),
     Bio TEXT);
 
@@ -23,7 +23,7 @@ CREATE TABLE Director(
     DirectorID SERIAL PRIMARY KEY,
     lastname VARCHAR(255) NOT NULL,
     firstame VARCHAR(255) NOT NULL,
-    DateOfBirth DATE,
+    DateOfBirth VARCHAR(255),
     country VARCHAR(255));
 
 CREATE TABLE Directs(

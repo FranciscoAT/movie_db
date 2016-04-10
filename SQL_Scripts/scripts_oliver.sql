@@ -24,11 +24,14 @@ description VARCHAR(255));
 
 CREATE TABLE movie(
 movieid SERIAL PRIMARY KEY, 
-name VARCHAR(255) NOT NULL,
+moviename VARCHAR(255) NOT NULL,
 duration SMALLINT,
-date_released DATE,
+date_release VARCHAR(255),
 language VARCHAR(255),
-imageurl VARCHAR(255));
+imageurl VARCHAR(255),
+plot TEXT,
+country VARCHAR(255),
+awards VARCHAR(255));
 
 CREATE TABLE watches(
 userid INTEGER, 
