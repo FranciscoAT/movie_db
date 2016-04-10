@@ -18,9 +18,15 @@ html
         .collapse.navbar-collapse
           ul.nav.navbar-nav
             li
-              a(href='/login') LOGIN
+              if user == null
+                a(href='/login') LOGIN
+              else
+                a(href='/logout') LOGOUT
             li
-              a(href='/signup') SIGN UP
+              if user == null
+                a(href='/signup') SIGN UP
+              else
+                a(href='/profile') PROFILE
             li.dropdown
               a.dropdown-toggle(data-toggle="dropdown" href="") BROWSE <span class="caret"></span>
               ul.dropdown-menu

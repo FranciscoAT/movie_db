@@ -4,7 +4,7 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var models = require("../models");
 
-router.get('/login', function(req, res, next) {
+router.get('/login',checkNotLoggedIn, function(req, res, next) {
   res.render('login', { title: 'Login', pageType: 'login' });
 });
 
@@ -16,7 +16,7 @@ router.post('/login',
   }
 );
 
-router.get('/signup', function(req, res, next) {
+router.get('/signup',checkNotLoggedIn, function(req, res, next) {
   res.render('signup', { title: 'Sign Up For DankRecs',  });
 });
 
@@ -48,5 +48,13 @@ router.post('/signup', function(req, res, next){
 router.get('/logout', function(req, res, next){
     
 });
+
+function checkNotLoggedIn(req, res, next) {
+
+    if (req.isAuthenticated())
+        res.redirect('/');
+
+    return next();
+}
 
 module.exports = router;
