@@ -1,10 +1,3 @@
-var fs = require('fs');
-var pg = require('pg');
-pg.defaults.poolIdleTimeout = 500;
-pg.defaults.poolSize = 25;
-
-var conString = "postgres://ftrin010:Campus1605@web0.site.uottawa.ca:15432/ftrin010";
-
 function storeMovie(){
     var filename = "JSON_files/tempMovie.json"
     var data  = JSON.parse(fs.readFileSync(filename, 'utf8'));

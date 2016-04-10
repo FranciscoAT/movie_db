@@ -1,6 +1,3 @@
-var http = require('http');
-var fs = require('fs');
-
 // Searches for recommendations from tastekid and stores it in tempRec.json
 
 function getSimilar(argName){
