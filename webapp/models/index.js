@@ -3,8 +3,9 @@
 var fs        = require("fs");
 var path      = require("path");
 var Sequelize = require("sequelize");
-var sequelize = new Sequelize('postgres', 'postgres', 'dankmemes', {
-    port: 5432,
+var sequelize = new Sequelize('ftrin010', 'ftrin010', 'Campus1605', {
+    port: 15432,
+    host: 'web0.site.uottawa.ca',
     dialect: 'postgres',
     freezeTableName: true,
     pool: {
