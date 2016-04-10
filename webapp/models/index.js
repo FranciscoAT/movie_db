@@ -3,9 +3,15 @@
 var fs        = require("fs");
 var path      = require("path");
 var Sequelize = require("sequelize");
+<<<<<<< HEAD
 var sequelize = new Sequelize('ftrin010', 'ftrin010', 'Campus1605', {
     port: 15432,
     host: 'web0.site.uottawa.ca',
+=======
+var sequelize = new Sequelize('ofei006', 'ofei006', '0Liver.706', {
+    host: 'web0.site.uottawa.ca',
+    port: 15432,
+>>>>>>> cc18bbcdd89ab372f27bed9c5b7fe59ada56c779
     dialect: 'postgres',
     freezeTableName: true,
     pool: {
