@@ -6,17 +6,11 @@ var Sequelize = require("sequelize");
 var sequelize = new Sequelize('postgres', 'postgres', 'dankmemes', {
     port: 5432,
     dialect: 'postgres',
-    dialectOptions: {
-        ssl: true
-    },
-    define: {
-        timestamps: false
-    },
     freezeTableName: true,
     pool: {
-        maxConnections: 9,
-        min: 0,
-        idle: 10000
+        maxConnections: 25,
+        minConnections: 0,
+        maxIdleTime: 300000
     }
 });
 

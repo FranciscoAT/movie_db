@@ -1,22 +1,25 @@
 var express = require('express');
 var path = require('path');
-var flash = require('express-flash');
+var flash = require('connect-flash');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 var routes = require('./routes/index');
 var profile = require('./routes/profile');
 var auth = require('./routes/auth');
-var User = require('./models').User;
+
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+require('./config/passport')(passport);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -29,6 +32,8 @@ app.use(cookieParser());
 app.use(session({ secret: 'yourwaifuisshit' }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
