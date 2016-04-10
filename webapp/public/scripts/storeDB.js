@@ -61,7 +61,4 @@ function storeMovie(){
     }
 };
 
-
-storeMovie();
-
 //getting and storing stuff, use this script file to write things into the movie table !! :D
