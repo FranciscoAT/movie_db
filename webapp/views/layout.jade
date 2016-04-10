@@ -21,9 +21,26 @@ html
               a(href='/login') LOGIN
             li
               a(href='/signup') SIGN UP
+            li.dropdown
+              a.dropdown-toggle(data-toggle="dropdown" href="") BROWSE <span class="caret"></span>
+              ul.dropdown-menu
+                li
+                  a(href="/movies") MOVIES
+                li
+                  a(href="/actors") ACTORS
+                li
+                  a(href="/directors") DIRECTORS
+                li
+                  a(href="/studios") STUDIOS
           #searchForm.col-sm-6.col-md-6.pull-right
             form.nav-form(role="search" action="/search" method="post")
-              .input-group
+              #searchType.input-group
+                select.form-control(name="searhType")
+                  option Movies
+                  option Actors
+                  option Directors
+                  option Studios
+              #searchBar.input-group
                 input.form-control(type="text" placeholder="Search our dank database" name="searchterm")
                 .input-group-btn
                   button.btn.btn-default(type="submit")

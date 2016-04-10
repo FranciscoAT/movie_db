@@ -1,6 +1,7 @@
 html, body {
   padding: 50px;
   font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+  min-width: 400px;
 }
 
 a {
@@ -72,4 +73,13 @@ title {
     padding-top: 5px;
     padding-bottom: 5px;
     display: flex;
+}
+
+.nav-form{
+    display:inline-flex;
+    width: 70%;
+}
+
+.dropdown:hover .dropdown-menu {
+display: block;
 }
