@@ -1,10 +1,7 @@
 CREATE TABLE Actor(
     ActorID SERIAL PRIMARY KEY,
-    lastname VARCHAR(255) NOT NULL,
-    firstname VARCHAR(255) NOT NULL,
-    DateOfBirth VARCHAR(255),
-    country VARCHAR(255),
-    Bio TEXT);
+    lastname VARCHAR(255),
+    firstname VARCHAR(255));
 
 CREATE TABLE Role(
     RoleID SERIAL PRIMARY KEY,

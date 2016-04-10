@@ -48,9 +48,14 @@ function storeMovie(){
             var name = data.Director.split(" ");
             pgQuery('INSERT INTO director (firstname, lastname) SELECT * FROM (SELECT \''+name[0]+'\', \''+name[1]+'\') AS tmp WHERE NOT EXISTS (SELECT firstname, lastname FROM director WHERE firstname = \''+name[0]+'\' AND lastname = \''+name[1]+'\') LIMIT 1');
             pgQuery('INSERT INTO directs (directorid, movieid) SELECT * FROM (SELECT (SELECT directorid FROM director WHERE firstname = \''+name[0]+'\' AND lastname = \''+name[1]+'\'), (SELECT movieid FROM movie WHERE moviename = \''+data.Title+'\' AND date_released = \''+data.Released+'\')) AS tmp WHERE NOT EXISTS (SELECT movieid, directorid FROM directs WHERE directorid = (SELECT directorid FROM director WHERE firstname = \''+name[0]+'\' AND lastname = \''+name[1]+'\') AND movieid = (SELECT movieid FROM movie WHERE moviename = \''+data.Title+'\' AND date_released = \''+data.Released+'\')) LIMIT 1');
-            
-            
-
+                       
+           //ACTORS & ACTORPLAYS
+            actors = data.Actors.split(", ");
+            for(var i in actors){
+                actorName = actors[i].split(" ");
+                pgQuery('INSERT INTO actor (firstname, lastname) SELECT * FROM (SELECT \''+actorName[0]+'\', \''+actorName[1]+'\') AS tmp WHERE NOT EXISTS (SELECT firstname, lastname FROM actor WHERE firstname = \''+actorName[0]+'\' AND lastname = \''+actorName[1]+'\') LIMIT 1');
+                pgQuery('INSERT INTO actorplays (actorid, movieid) SELECT * FROM (SELECT (SELECT actorid FROM actor WHERE firstname = \''+actorName[0]+'\' AND lastname = \''+actorName[1]+'\'), (SELECT movieid FROM movie WHERE moviename = \''+data.Title+'\' AND date_released = \''+data.Released+'\')) AS tmp WHERE NOT EXISTS (SELECT movieid, actorid FROM actorplays WHERE actorid = (SELECT actorid FROM actor WHERE firstname = \''+actorName[0]+'\' AND lastname = \''+actorName[1]+'\') AND movieid = (SELECT movieid FROM movie WHERE moviename = \''+data.Title+'\' AND date_released = \''+data.Released+'\')) LIMIT 1');
+            }
             done();
         });
     }
