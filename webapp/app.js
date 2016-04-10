@@ -30,8 +30,8 @@ app.use(cookieParser());
 
 app.use(session({ 
     secret: 'yourwaifuisshit', 
-    saveUninitialized: true,
-    resave: true
+    saveUninitialized: false,
+    resave: true,
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -41,7 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/', auth);
-app.use('/profile', profile);
+app.use('/', profile);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

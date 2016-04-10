@@ -2,8 +2,10 @@ extends layout
   
 block content
   .container
-    h1= title
-  #infoContainer.container 
+    h1= title    
+  #infoContainer.container
+  block info
+  //Info goes here.  Sample markup for movie format:
     .search-result-item.container
       img(style="width: 100px;")
       .container

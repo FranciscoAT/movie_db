@@ -11,8 +11,7 @@ router.get('/login',checkNotLoggedIn, function(req, res, next) {
 router.post('/login',
   passport.authenticate('local-login', {failureRedirect: '/login'}),
   function(req, res) {
-    console.log('redirecting');
-    res.render('index',{title: 'DankRecs'});
+    res.redirect('/');
   }
 );
 
@@ -46,7 +45,8 @@ router.post('/signup', function(req, res, next){
 });
 
 router.get('/logout', function(req, res, next){
-    
+    req.logout();
+    res.redirect('/');
 });
 
 function checkNotLoggedIn(req, res, next) {
