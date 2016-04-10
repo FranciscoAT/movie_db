@@ -11,7 +11,6 @@ var passport = require('passport');
 var routes = require('./routes/index');
 var profile = require('./routes/profile');
 var auth = require('./routes/auth');
-
 var app = express();
 
 // view engine setup

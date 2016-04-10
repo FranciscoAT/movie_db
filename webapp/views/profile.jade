@@ -1,2 +1,41 @@
 extends info_layout
 
+block info
+  form(method = 'post')
+    .form-group
+      label First Name
+      input.form-control(name='firstname')= firstname
+    .form-group
+      label Last Name
+      input.form-control(name='firstname')= lastname
+    .form-group
+      label Age
+      input.form-control(name='age' type='number' min='1')= age
+    .form-group
+      label Gender
+      select.form-control(name='gender')
+        if gender == 'm'
+          option(selected) MALE
+          option FEMALE
+          option
+        if gender == 'f'
+          option MALE
+          option(selected) FEMALE
+          option
+        else
+          option MALE
+          option FEMALE
+          option(selected)
+    .form-group
+      label City
+      input.form-control(name='city')= city
+    .form-group
+      label Province
+      input.form-control(name='province')= province
+    .form-group
+      label Country
+      input.form-control(name='country')= country
+    .form-group
+      label Description
+      textarea.form-control(name='description')= description
+    button.btn.btn-default(type='submit') Update

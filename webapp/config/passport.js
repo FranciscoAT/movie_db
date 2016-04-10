@@ -15,7 +15,7 @@ module.exports = function(passport) {
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
         console.log('deserialize');
-        models.Users.findById(id).then(function(user) { done(null, user); });
+        models.users.findById(id).then(function(user) { done(null, user); });
     });
     
     // =========================================================================
@@ -35,7 +35,7 @@ module.exports = function(passport) {
         process.nextTick(function() {
             // find a user whose email is the same as the forms email
             // we are checking to see if the user trying to login already exists
-            models.Users.findOne({where: {email: regemail}}).then(function(user) {
+            models.users.findOne({where: {email: regemail}}).then(function(user) {
                 // if no user is found, return the message
                 if (!user)
                     return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash

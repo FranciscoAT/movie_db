@@ -3,7 +3,7 @@
 var bcrypt = require('bcrypt-nodejs');
 
 module.exports = function(sequelize, DataTypes) {
-  var Users = sequelize.define("Users", {
+  var Users = sequelize.define("users", {
       email: DataTypes.STRING,
       password: DataTypes.STRING,
       isadmin: DataTypes.BOOLEAN
