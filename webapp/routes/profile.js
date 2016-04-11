@@ -63,10 +63,12 @@ router.get('/profile', isLoggedIn, function(req, res, next){
 });
 
 router.post('/profile', isLoggedIn, function(req,res,next){
-    
+        var age;
+        if(req.body.age!='')
+          age = req.body.age;
         var newProfile = [req.body.firstname, 
                         req.body.lastname, 
-                        req.body.age, 
+                        age, 
                         req.body.gender,
                         req.body.city, 
                         req.body.province,
@@ -102,7 +104,7 @@ router.post('/profile', isLoggedIn, function(req,res,next){
                     function(err, result){
                         handleError(err);
                         console.log(result);
-                        res.render('index',{});                        
+                        res.redirect('/profile');                        
                 });
             }
             done();
