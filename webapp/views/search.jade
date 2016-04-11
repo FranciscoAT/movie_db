@@ -8,9 +8,12 @@ block info
     .search-result-item.container
        img(src=movie.imageurl)
        .container
-          h3=movie.moviename
+          h3#movieName=movie.moviename
           p="Rating: " + movie.rating
           p="Release Date: " + movie.date_release
           p="Genres: " + movie.topicarray
     .container
-      h3 Recommendations:
+    button(onclick='getSimilar();') Get Recommendations
+      
+append scripts
+  script(src='/scripts/search.js')
