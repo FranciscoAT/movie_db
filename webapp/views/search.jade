@@ -6,8 +6,11 @@ block title
 block info
   if movie != null
     .search-result-item.container
-       img(src=)
+       img(src=movie.imageurl)
        .container
           h3=movie.moviename
-          input.rating(type="text" readonly=true data-size="sm" data-step=0.1 value=movie.rating)
-          p="Release Date: " + movie.date_release + "<br />" + "Genres: " + movie.topicArray
+          p="Rating: " + movie.rating
+          p="Release Date: " + movie.date_release
+          p="Genres: " + movie.topicarray
+    .container
+      h3 Recommendations:
