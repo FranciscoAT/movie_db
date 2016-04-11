@@ -106,8 +106,11 @@ function followUP(list){
 };
 
 function preamble(name){
-    getSimilar(name);
-}
+    jQuery.ajax({
+        getSimilar(name);
+        async:false;
+    });
+};
 
 function populateFiles(argName, recList){
     if(!(recList.length == 0)){
@@ -127,6 +130,7 @@ function populateFiles(argName, recList){
 
 function populateDB(argName){
     var movieName = argName.replace(/ /g, "+");
+    console.log(movieName);
     preamble(movieName);
     var populate = JSON.parse(fs.readFileSync('JSON_files/tempRec.json', 'utf8'));
     var recList = populate.Similar.Results;
@@ -134,4 +138,4 @@ function populateDB(argName){
     followUP(recList);
 };
 
-populateDB("Alien");
+populateDB("Ice Age");
