@@ -7,6 +7,9 @@ pg.defaults.poolSize = 25;
 var conString = "postgres://postgres:dankmemes@localhost:5432/postgres";
 
 function getSimilar(argName){
+    argName = argName.replace(/ /g, "+");
+    argName = argName.replace(/'/g, "''");
+    argName = argName.replace(/:/g, "");
     var options = {
         host: 'www.tastekid.com',
         port: 80,
@@ -20,6 +23,9 @@ function getSimilar(argName){
         });
         res.on('end', function() {
             fs.writeFile('JSON_files/tempRec.json', data);
+            setTimeout(function(){
+                populateFiles(argName);
+            }, 1000);
         });
     }).on('error', function(e) {
         console.log("Got error: " + e.message);
@@ -40,6 +46,9 @@ function getMovie(Name, position){
         });
         res.on('end', function(){
             fs.writeFile('JSON_files/tempMovie'+position+'.json', data);
+            setTimeout(function(){
+                storeMovie(position);
+            }, 1000);
         });
     }).on('error', function(e) {
         console.log("Got error: "+e.message);
@@ -52,7 +61,9 @@ function storeMovie(position){
     if(data.Response == "True"){
         var Runtime = parseInt(data.Runtime.substr(0,data.Runtime.indexOf(' ')));
         var Plot = data.Plot.replace(/'/g, "''");
-
+        data.Title = data.Title.replace(/:/g, "");
+        data.Title = data.Title.replace(/-/g, "");
+        console.log("Storing: "+data.Title);
         pg.connect(conString, function(err, client, done){
             var handleError = function(err){
                 if(!err) return false;
@@ -99,40 +110,21 @@ function storeMovie(position){
     }
 };
 
-function followUP(list){
-    for(var i in list){
-        storeMovie(i);
-    }
+function populateFiles(argName){
+    var recList = JSON.parse(fs.readFileSync('JSON_files/tempRec.json', 'utf8'));
+    recList = recList.Similar.Results;
+        if(!(recList.length == 0)){
+            getMovie(argName, '');
+            for(var i in recList){
+            recList[i].Name = recList[i].Name.replace(/ /g, "+");
+            recList[i].Name = recList[i].Name.replace(/,/g, "");
+            getMovie(recList[i].Name, i);
+            }
+        }
+        else{
+            console.log("tempRec empty");
+            return null;
+        }
 };
 
-function preamble(name){
-    getSimilar(name);
-};
-
-function populateFiles(argName, recList){
-    if(!(recList.length == 0)){
-        getMovie(argName, '');
-        storeMovie('');
-       for(var i in recList){
-         recList[i].Name = recList[i].Name.replace(/ /g, "+");
-         recList[i].Name = recList[i].Name.replace(/,/g, "");
-         getMovie(recList[i].Name, i);
-       }
-    }
-    else{
-        console.log("tempRec empty");
-        return null;
-    }
-};
-
-function populateDB(argName){
-    var movieName = argName.replace(/ /g, "+");
-    console.log(movieName);
-    preamble(movieName);
-    var populate = JSON.parse(fs.readFileSync('JSON_files/tempRec.json', 'utf8'));
-    var recList = populate.Similar.Results;
-    populateFiles(argName, recList);
-    followUP(recList);
-};
-
-populateDB("Ice Age");
+getSimilar("Black Mass");
