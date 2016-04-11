@@ -1,4 +1,6 @@
 // Searches for recommendations from tastekid and stores it in tempRec.json
+var http = require('http');
+var fs = require('fs');
 
 function getSimilar(argName){
     var options = {
@@ -20,5 +22,4 @@ function getSimilar(argName){
     });
 };
 
-
-
+getSimilar("Clockwork+Orange");

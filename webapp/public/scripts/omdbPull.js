@@ -22,3 +22,4 @@ function getMovie(Name){
         console.log("Got error: "+e.message);
     });
 };
+
