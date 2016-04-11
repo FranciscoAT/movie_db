@@ -2,7 +2,7 @@ var fs = require('fs');
 var pg = require('pg');
 var http = require('http');
 pg.defaults.poolIdleTimeout = 500;
-pdefaults.poolSize = 25;
+pg.defaults.poolSize = 25;
 
 var conString = "postgres://postgres:dankmemes@localhost:5432/postgres";
 
@@ -26,7 +26,7 @@ function getSimilar(argName){
     });
 };
 
-function getMovie(Name){
+function getMovie(Name, position){
    var options = {
        host: 'www.omdbapi.com',
        port: 80,
@@ -34,23 +34,22 @@ function getMovie(Name){
     };
 
     http.get(options, function(res){
-        console.log(Name);
         var data = '';
         res.on('data', function(chunk){
             data += chunk;
         });
         res.on('end', function(){
-            fs.writeFile('JSON_files/tempMovie.json', data);
+            fs.writeFile('JSON_files/tempMovie'+position+'.json', data);
         });
     }).on('error', function(e) {
         console.log("Got error: "+e.message);
     });
 };
 
-function storeMovie(){
-    var filename = "JSON_files/tempMovie.json"
+function storeMovie(position){
+    var filename = "JSON_files/tempMovie"+position+".json";
     var data  = JSON.parse(fs.readFileSync(filename, 'utf8'));
-    if(data.Response = "True"){
+    if(data.Response == "True"){
         var Runtime = parseInt(data.Runtime.substr(0,data.Runtime.indexOf(' ')));
         var Plot = data.Plot.replace(/'/g, "''");
 
@@ -88,7 +87,8 @@ function storeMovie(){
             pgQuery('INSERT INTO directs (directorid, movieid) SELECT * FROM (SELECT (SELECT directorid FROM director WHERE firstname = \''+name[0]+'\' AND lastname = \''+name[1]+'\'), (SELECT movieid FROM movie WHERE moviename = \''+data.Title+'\' AND date_released = \''+data.Released+'\')) AS tmp WHERE NOT EXISTS (SELECT movieid, directorid FROM directs WHERE directorid = (SELECT directorid FROM director WHERE firstname = \''+name[0]+'\' AND lastname = \''+name[1]+'\') AND movieid = (SELECT movieid FROM movie WHERE moviename = \''+data.Title+'\' AND date_released = \''+data.Released+'\')) LIMIT 1');
                        
            //ACTORS & ACTORPLAYS
-            actors = data.Actors.split(", ");
+            var actors = data.Actors.replace(/'/g, "''");
+            actors = actors.split(", ");
             for(var i in actors){
                 actorName = actors[i].split(" ");
                 pgQuery('INSERT INTO actor (firstname, lastname) SELECT * FROM (SELECT \''+actorName[0]+'\', \''+actorName[1]+'\') AS tmp WHERE NOT EXISTS (SELECT firstname, lastname FROM actor WHERE firstname = \''+actorName[0]+'\' AND lastname = \''+actorName[1]+'\') LIMIT 1');
@@ -99,22 +99,24 @@ function storeMovie(){
     }
 };
 
-function populateDB(argName){
-    var movieName = argName.replace(/ /g, "+");
-    getSimilar(movieName);
-    var populate = JSON.parse(fs.readFileSync('JSON_files/tempRec.json', 'utf8'));
-    var recList = populate.Similar.Results;
+function followUP(list){
+    for(var i in list){
+        storeMovie(i);
+    }
+};
+
+function preamble(name){
+    getSimilar(name);
+}
+
+function populateFiles(argName, recList){
     if(!(recList.length == 0)){
-        getMovie(movieName);
-        storeMovie(movieName);
-        console.log("Storing movie: "+movieName);
+        getMovie(argName, '');
+        storeMovie('');
        for(var i in recList){
-         var temp = recList[i].Name.replace(/ /g, "+");
-         temp = temp.replace(/,/g, "");
-         console.log("Storing: "+temp);
-         getMovie(temp);
-//         console.log(fs.readFileSync('JSON_files/tempMovie.json','utf8'));
-         storeMovie();
+         recList[i].Name = recList[i].Name.replace(/ /g, "+");
+         recList[i].Name = recList[i].Name.replace(/,/g, "");
+         getMovie(recList[i].Name, i);
        }
     }
     else{
@@ -123,4 +125,13 @@ function populateDB(argName){
     }
 };
 
-populateDB("Pulp Fiction");
+function populateDB(argName){
+    var movieName = argName.replace(/ /g, "+");
+    preamble(movieName);
+    var populate = JSON.parse(fs.readFileSync('JSON_files/tempRec.json', 'utf8'));
+    var recList = populate.Similar.Results;
+    populateFiles(argName, recList);
+    followUP(recList);
+};
+
+populateDB("Alien");
