@@ -106,10 +106,7 @@ function followUP(list){
 };
 
 function preamble(name){
-    jQuery.ajax({
-        getSimilar(name);
-        async:false;
-    });
+    getSimilar(name);
 };
 
 function populateFiles(argName, recList){

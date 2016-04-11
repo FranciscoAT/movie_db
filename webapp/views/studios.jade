@@ -1,1 +1,15 @@
 extends table_layout
+
+block columnHeaders
+  th Studio
+  th Country
+  th Movies
+
+block tableRows
+  each row, rowIndex in rows
+    tr
+      th= row.name
+      th= row.country
+      th= row.movies
+
+append scripts

@@ -7,12 +7,7 @@ block columnHeaders
 block tableRows
   each row, rowIndex in rows
     tr
-      each item, index in row
-        if index == 0
-          th
-            img(src=item)
-        else if index == 1
-          th
-            a(href='/search?='+item) item
+      th= row.firstname + " " + row.lastname
+      th= row.directed
 
 append scripts

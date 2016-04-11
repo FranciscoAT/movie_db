@@ -10,14 +10,12 @@ block columnHeaders
 block tableRows
   each row in rows
     tr
-      each item, index in row
-        if index == 0
-          th
-            img(src=item)
-        else if index == 1
-          th
-            a(href='/search?='+item) item
-        else
-          th item
+      th
+        img(src=row.imageurl)
+      th
+        a(href='/search?='+row.moviename)= row.moviename
+      th= row.date_release
+      th= row.rating
+      th= row.topicarray
 
 append scripts

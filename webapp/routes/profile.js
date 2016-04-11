@@ -11,6 +11,7 @@ router.get('/admin',isAdmin,function(req,res,next){
 router.post('/admin',isAdmin,function(req,res,next){
     pg.connect(configDB.url, function(err, client, done){      
         client.query(req.body.query, function(err, result){
+            console.log(result);
             console.log(err);
             if(err)
                 res.render('admin',{title: 'Your Query Failed', user: req.user, error: err});
@@ -23,7 +24,7 @@ router.post('/admin',isAdmin,function(req,res,next){
     });
 });
 
-router.get('/seen',isAdmin,function(req,res,next){
+router.get('/seen',isLoggedIn,function(req,res,next){
     var watchesQuery = "SELECT M.imageurl, M.moviename, W.rating FROM movie M, watches W WHERE W.movieid = M.movieid AND W.id = " + req.user.id;
     pg.connect(configDB.url, function(err, client, done){      
         client.query(watchesQuery, function(err, result){
