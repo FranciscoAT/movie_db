@@ -72,7 +72,7 @@ router.get('/directors', function(req, res, next) {
 
 router.get('/studios', function(req, res, next) {
   pg.connect(configDB.url, function(err, client, done){      
-        client.query(actorQuery, function(err, result){
+        client.query(studioQuery, function(err, result){
             console.log(err);
             for (var i = 0; i < result.rowCount; i++){
                 console.log(result.rows[i]);
