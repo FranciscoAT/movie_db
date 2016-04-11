@@ -1,13 +1,13 @@
 extends info_layout
 
 append head
-  link(rel="stylesheet" href='https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css')
+  link(rel="stylesheet" href='https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css')
 
 block content
   .container
     h1= title 
   block info
-    table#rowTable.table.table-striped.table-bordered
+    table#rowTable.table.table-striped.table-bordered.display
       if rows != null
         thead
           tr
@@ -17,4 +17,5 @@ block content
 
 append scripts
   script(src='https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js')
+  script(src='https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js')
   script(src='/scripts/table_layout.js')

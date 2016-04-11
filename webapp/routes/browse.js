@@ -27,11 +27,16 @@ router.get('/movies', function(req, res, next) {
     pg.connect(configDB.url, function(err, client, done){      
         client.query(movieQuery, function(err, result){
             console.log(err);
+            var searchTerms = [];
+            for(var i = 0; i<result.rowCount; i++){
+                var moviename = result.rows[i].moviename
+                searchTerms.push(moviename.replace(" ","+"));
+            }
             for (var i = 0; i < result.rowCount; i++){
                 console.log(result.rows[i]);
             }
             if(!err)
-                res.render('movies', { title: 'Dank Movies', user: req.user, rows: result.rows});
+                res.render('movies', { title: 'Dank Movies', user: req.user, rows: result.rows, search: searchTerms});
         });
         done();
     });

@@ -6,13 +6,11 @@ block columnHeaders
   th Your Rating
 
 block tableRows
-  each row in rows
+  each row, index in rows
     tr
-      each item, index in row
-        th
-          if index == 0
-            img(src=item)
-          else
-            item
-  
+      td
+        img(src=row.imageurl)
+      td= row.moviename
+      td= row.rating
+
 append scripts

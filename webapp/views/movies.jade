@@ -8,14 +8,13 @@ block columnHeaders
   th Topics
 
 block tableRows
-  each row in rows
+  each row, index in rows
     tr
-      th
+      td
         img(src=row.imageurl)
-      th
-        a(href='/search?='+row.moviename)= row.moviename
-      th= row.date_release
-      th= row.rating
-      th= row.topicarray
+      td= row.moviename
+      td= row.date_release
+      td= row.rating
+      td= row.topicarray
 
 append scripts

@@ -29,8 +29,13 @@ router.get('/seen',isLoggedIn,function(req,res,next){
     pg.connect(configDB.url, function(err, client, done){      
         client.query(watchesQuery, function(err, result){
             console.log(result);
+            var searchTerms=[];
+            for(var i = 0; i<result.rowCount; i++){
+                var moviename = result.rows[i].moviename
+                searchTerms.push(moviename.replace(" ","+"));
+            }
             if(!err)
-                res.render('seen',{title: 'Your Dank Movies', user: req.user, rows: result.rows});
+                res.render('seen',{title: 'Your Dank Movies', user: req.user, rows: result.rows, search: searchTerms});
         });
         
         done();
