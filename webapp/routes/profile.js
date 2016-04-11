@@ -4,6 +4,25 @@ var configDB = require('../config/database.js');
 var pg = require('pg');
 
 
+router.get('/admin',isAdmin,function(req,res,next){
+    res.render('admin',{title: 'Dank Admin Console', user: req.user});
+});
+
+router.post('/admin',isAdmin,function(req,res,next){
+    pg.connect(configDB.url, function(err, client, done){      
+        client.query(req.body.query, function(err, result){
+            console.log(err);
+            if(err)
+                res.render('admin',{title: 'Your Query Failed', user: req.user, error: err});
+            else{
+                res.render('admin',{title: 'Dank Query Results', user: req.user, rows: result.rows, columns: result.fields});
+            }
+        });
+        
+        done();
+    });
+});
+
 router.get('/profile', isLoggedIn, function(req, res, next){
    var profileQuery = 'SELECT * FROM profiles WHERE id = ' + req.user.id;
    var insertQuery = 'INSERT INTO profiles(id) VALUES(' + req.user.id + ')';
@@ -43,7 +62,7 @@ router.get('/profile', isLoggedIn, function(req, res, next){
     });
 });
 
-router.post('/profile',function(req,res,next){
+router.post('/profile', isLoggedIn, function(req,res,next){
     
         var newProfile = [req.body.firstname, 
                         req.body.lastname, 
@@ -91,6 +110,13 @@ router.post('/profile',function(req,res,next){
                
 });
 
+function isAdmin(req, res, next){
+    if(req.user == null) 
+        res.redirect('/login');
+    else if(req.user.isAdmin == false)
+        res.redirect('/');
+    return next();
+}
 
 function isLoggedIn(req, res, next) {
 

@@ -1,4 +1,3 @@
-$(".rating").rating();
 
 $('#deleteAccount').submit(function(e){
   e.preventDefault();

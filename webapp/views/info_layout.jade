@@ -1,16 +1,23 @@
 extends layout
 
+append head
+  link(rel = "stylesheet" type="text/css" href="/bootstrap-star-rating/css/star-rating.css")
+
 block content
   .container
     h1= title    
   #infoContainer.container
-  block info
-  //Info goes here.  Sample markup for movie format:
-    .search-result-item.container
-      img(style="width: 100px;")
-      .container
-        h3 Movie Title
-        input.rating(type="text" readonly=true data-size="sm" data-step=0.1)
-        p 
-          |Release Date: 2016 <br />
-          |Genres: Thriller, Psychological, Mystery, Porn, Hentai, Dank Memes
+    block info
+    //Info goes here.  Sample markup for movie format:
+      .search-result-item.container
+        img(style="width: 100px;")
+        .container
+          h3 Movie Title
+          input.rating(type="text" readonly=true data-size="sm" data-step=0.1)
+          p 
+            |Release Date: 2016 <br />
+            |Genres: Thriller, Psychological, Mystery, Porn, Hentai, Dank Memes
+
+append scripts  
+  script(src="/bootstrap-star-rating/js/star-rating.js")
+  script(src='/scripts/info_layout.js')

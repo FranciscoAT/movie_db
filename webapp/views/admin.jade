@@ -1,0 +1,35 @@
+extends layout
+
+append head
+  link(rel="stylesheet" href='https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css')
+
+block content
+  .container
+    h1= title    
+  #infoContainer.container
+    block info
+      form(method='post' action='/admin/' style='display:inline;')
+        .form-group(style='display:inline')
+          input.form-control(type="text" name = 'query')
+        button.btn.btn-default(type='submit' style='visibility:hidden') Query!
+        
+      h1 Output
+      table#rowTable.table.table-striped.table-bordered
+        if columns != null && rows != null
+          thead
+            tr
+              each val in columns
+                th= val.name
+          tbody
+            each row in rows
+              tr
+                each item in row
+                  th= item
+      if error != null
+        .container
+          h2= error
+  
+              
+append scripts
+  script(src='https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js')
+  script(src='/scripts/admin.js')
