@@ -1,1 +1,23 @@
-extends info_layout
+extends table_layout
+
+block columnHeaders
+  th Image
+  th Movie
+  th Release Date
+  th DankRecs Rating
+  th Topics
+
+block tableRows
+  each row in rows
+    tr
+      each item, index in row
+        if index == 0
+          th
+            img(src=item)
+        else if index == 1
+          th
+            a(href='/search?='+item) item
+        else
+          th item
+
+append scripts

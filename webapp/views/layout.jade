@@ -4,8 +4,6 @@ html
     block title
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/bootstrap-3.3.6-dist/css/bootstrap.min.css')
-    link(rel = "stylesheet" type="text/css" href="/bootstrap-star-rating/css/star-rating.css")
-    link(rel="stylesheet" href='https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css')
   body
     .navbar.navbar-default.navbar-fixed-top(role='navigation')
       .container
@@ -23,11 +21,17 @@ html
                 a(href='/login') LOGIN
               else
                 a(href='/logout') LOGOUT
-            li
-              if user == null
+            if user == null
+              li              
                 a(href='/signup') SIGN UP
-              else
-                a(href='/profile') PROFILE
+            else
+              li.dropdown
+                a.dropdown-toggle(data-toggle="dropdown" href="") ACCOUNT <span class="caret"></span>
+                ul.dropdown-menu
+                  li
+                    a(href='/profile') PROFILE
+                  li
+                    a(href='/seen') MY MOVIES
             li.dropdown
               a.dropdown-toggle(data-toggle="dropdown" href="") BROWSE <span class="caret"></span>
               ul.dropdown-menu

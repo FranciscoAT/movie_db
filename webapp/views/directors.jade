@@ -1,1 +1,18 @@
-extends info_layout
+extends table_layout
+
+block columnHeaders
+  th Director
+  th Movies
+
+block tableRows
+  each row, rowIndex in rows
+    tr
+      each item, index in row
+        if index == 0
+          th
+            img(src=item)
+        else if index == 1
+          th
+            a(href='/search?='+item) item
+
+append scripts

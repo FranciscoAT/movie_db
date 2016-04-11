@@ -15,8 +15,21 @@ router.post('/admin',isAdmin,function(req,res,next){
             if(err)
                 res.render('admin',{title: 'Your Query Failed', user: req.user, error: err});
             else{
-                res.render('admin',{title: 'Dank Query Results', user: req.user, rows: result.rows, columns: result.fields});
+                res.render('admin',{title: 'Your Dank Query Succeeded', user: req.user, rows: result.rows, columns: result.fields});
             }
+        });
+        
+        done();
+    });
+});
+
+router.get('/seen',isAdmin,function(req,res,next){
+    var watchesQuery = "SELECT M.imageurl, M.moviename, W.rating FROM movie M, watches W WHERE W.movieid = M.movieid AND W.id = " + req.user.id;
+    pg.connect(configDB.url, function(err, client, done){      
+        client.query(watchesQuery, function(err, result){
+            console.log(result);
+            if(!err)
+                res.render('seen',{title: 'Your Dank Movies', user: req.user, rows: result.rows});
         });
         
         done();

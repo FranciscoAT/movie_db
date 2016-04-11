@@ -19,7 +19,7 @@ CREATE TABLE ActorPlays(
 CREATE TABLE Director(
     DirectorID SERIAL PRIMARY KEY,
     lastname VARCHAR(255),
-    firstname VARCHAR(255),
+    firstname VARCHAR(255)
     );
 
 CREATE TABLE Directs(

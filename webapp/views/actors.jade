@@ -1,1 +1,21 @@
-extends info_layout
+extends table_layout
+
+block columnHeaders
+  th Actor
+  th Featured In
+  th Roles Played
+
+block tableRows
+  each row in rows
+    tr
+      each item, index in row
+        if index == 0
+          th
+            img(src=item)
+        else if index == 1
+          th
+            a(href='/search?='+item) item
+        else if index == 2
+          th item
+            
+append scripts

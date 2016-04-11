@@ -11,6 +11,7 @@ var passport = require('passport');
 var routes = require('./routes/index');
 var profile = require('./routes/profile');
 var auth = require('./routes/auth');
+var browse = require('./routes/browse');
 var app = express();
 
 // view engine setup
@@ -41,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/', auth);
 app.use('/', profile);
+app.use('/', browse);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

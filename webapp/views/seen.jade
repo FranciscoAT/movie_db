@@ -1,0 +1,18 @@
+extends table_layout
+
+block columnHeaders
+  th Image
+  th Movie
+  th Your Rating
+
+block tableRows
+  each row in rows
+    tr
+      each item, index in row
+        th
+          if index == 0
+            img(src=item)
+          else
+            item
+  
+append scripts
